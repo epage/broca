@@ -2,7 +2,7 @@
 
 repository:
   description: "DESCRIPTION"
-  homepage: "https://docs.rs/PROJECT"
+  homepage: "https://docs.rs/broca"
   topics: ""
   has_issues: true
   has_projects: false

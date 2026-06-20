@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "PROJECT"
+name = "broca"
 version = "0.0.1"
