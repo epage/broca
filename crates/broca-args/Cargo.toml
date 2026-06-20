@@ -1,5 +1,5 @@
 [package]
-name = "broca"
+name = "broca-args"
 version = "0.0.1"
 description = "DESCRIPTION"
 categories = []
@@ -27,7 +27,6 @@ pre-release-replacements = [
 default = []
 
 [dependencies]
-broca-args = { version = "0.0.1", path = "../broca-args" }
 
 [lints]
 workspace = true
