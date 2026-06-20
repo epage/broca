@@ -27,6 +27,8 @@ pre-release-replacements = [
 default = []
 
 [dependencies]
+clap = { version = "4.6.1", features = ["derive"] }
+clap-cargo = "0.18.3"
 
 [lints]
 workspace = true
