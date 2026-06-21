@@ -6,7 +6,7 @@ fn main() {
     match run() {
         Ok(()) => {}
         Err(err) => {
-            eprintln!("{err}");
+            anstream::eprintln!("{err}");
         }
     }
 }

@@ -27,6 +27,7 @@ pre-release-replacements = [
 default = []
 
 [dependencies]
+anstream = "1.0.0"
 anyhow = "1.0.102"
 broca-args = { version = "0.0.1", path = "../broca-args" }
 broca-config = { version = "0.0.1", path = "../broca-config", features = ["serde", "toml"] }
