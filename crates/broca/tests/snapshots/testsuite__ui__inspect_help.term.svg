@@ -16,15 +16,15 @@
   <rect width="100%" height="100%" y="0" rx="4.5" class="bg" />
 
   <text xml:space="preserve" class="container fg">
-    <tspan x="10px" y="28px"><tspan>Usage: broca[EXE] &lt;COMMAND&gt;</tspan>
+    <tspan x="10px" y="28px"><tspan>Usage: broca[EXE] inspect &lt;COMMAND&gt;</tspan>
 </tspan>
     <tspan x="10px" y="46px">
 </tspan>
     <tspan x="10px" y="64px"><tspan>Commands:</tspan>
 </tspan>
-    <tspan x="10px" y="82px"><tspan>  inspect  </tspan>
+    <tspan x="10px" y="82px"><tspan>  discover  </tspan>
 </tspan>
-    <tspan x="10px" y="100px"><tspan>  help     Print this message or the help of the given subcommand(s)</tspan>
+    <tspan x="10px" y="100px"><tspan>  help      Print this message or the help of the given subcommand(s)</tspan>
 </tspan>
     <tspan x="10px" y="118px">
 </tspan>

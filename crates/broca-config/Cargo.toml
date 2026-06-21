@@ -1,5 +1,5 @@
 [package]
-name = "broca"
+name = "broca-config"
 version = "0.0.1"
 description = "DESCRIPTION"
 categories = []
@@ -25,16 +25,12 @@ pre-release-replacements = [
 
 [features]
 default = []
+serde = ["dep:serde", "camino/serde1"]
 
 [dependencies]
 anyhow = "1.0.102"
-broca-args = { version = "0.0.1", path = "../broca-args" }
-broca-config = { version = "0.0.1", path = "../broca-config", features = ["serde"] }
-clap = { version = "4.6.1", features = ["derive"] }
-serde_json = "1.0.150"
+camino = "1.2.2"
+serde = { version = "1.0.228", features = ["derive"], optional = true }
 
 [lints]
 workspace = true
-
-[dev-dependencies]
-snapbox = { version = "1.2.2", features = ["dir", "term-svg", "json"] }
