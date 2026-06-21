@@ -46,7 +46,11 @@ fn unused() {
             .is_json()
             .against_jsonlines(),
         )
-        .stderr_eq(str![]);
+        .stderr_eq(str![[r#"
+warning: unused field `unused`
+ --> [CARGO_TARGET_TMPDIR]/testsuite/inspect_config/unused/broca.toml
+
+"#]]);
 
     fixture.close().unwrap();
 }
