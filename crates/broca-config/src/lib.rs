@@ -4,4 +4,7 @@
 #![warn(clippy::print_stderr)]
 #![warn(clippy::print_stdout)]
 
+#[cfg(feature = "toml")]
+mod toml;
+
 pub mod site;

@@ -1,5 +1,6 @@
 mod macros;
 
+mod inspect_config;
 mod inspect_discover;
 mod ui;
 

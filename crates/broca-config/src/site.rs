@@ -45,3 +45,36 @@ impl SiteLocation {
 }
 
 const CONFIG_FILE_NAME: &[&str] = &[".broca.toml", "_broca.toml", "broca.toml"];
+
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[derive(Default, Clone, Debug)]
+pub struct Site {
+    #[cfg_attr(feature = "serde", serde(skip))]
+    pub _location: Option<SiteLocation>,
+    #[cfg_attr(feature = "serde", serde(skip))]
+    pub _unused: Vec<String>,
+}
+
+impl Site {
+    #[cfg(feature = "toml")]
+    pub fn load() -> Result<Self, anyhow::Error> {
+        let location = SiteLocation::discover()?;
+        match &location {
+            SiteLocation::Root(_) => Ok(Self {
+                _location: Some(location),
+                ..Default::default()
+            }),
+            SiteLocation::Config(path) => Self::load_from(path),
+        }
+    }
+
+    #[cfg(feature = "toml")]
+    pub fn load_from(toml_path: &Utf8Path) -> Result<Self, anyhow::Error> {
+        let content = std::fs::read_to_string(toml_path.as_std_path())
+            .map_err(|err| anyhow::format_err!("{err}: {toml_path}"))?;
+        let (mut site, unused): (Self, _) = crate::toml::from_str(&content)?;
+        site._location = Some(SiteLocation::Config(toml_path.to_owned()));
+        site._unused = unused;
+        Ok(site)
+    }
+}

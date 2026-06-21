@@ -20,4 +20,5 @@ pub enum CliCommand {
 #[derive(clap::Subcommand)]
 pub enum InspectCommand {
     Discover,
+    Config,
 }
