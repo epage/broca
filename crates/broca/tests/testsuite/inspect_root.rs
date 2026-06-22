@@ -8,7 +8,7 @@ fn config_dir() {
         .unwrap();
 
     crate::broca()
-        .args(["inspect", "discover"])
+        .args(["inspect", "root"])
         .current_dir(fixture.path().unwrap())
         .assert()
         .success()
@@ -16,7 +16,7 @@ fn config_dir() {
             str![[r#"
 [
   {
-    "config": "[CARGO_TARGET_TMPDIR]/testsuite/inspect_discover/config_dir/broca.toml"
+    "config": "[CARGO_TARGET_TMPDIR]/testsuite/inspect_root/config_dir/broca.toml"
   }
 ]
 "#]]
@@ -35,7 +35,7 @@ fn config_child_dir() {
         .unwrap();
 
     crate::broca()
-        .args(["inspect", "discover"])
+        .args(["inspect", "root"])
         .current_dir(fixture.path().unwrap().join("foo/bar"))
         .assert()
         .success()
@@ -43,7 +43,7 @@ fn config_child_dir() {
             str![[r#"
 [
   {
-    "config": "[CARGO_TARGET_TMPDIR]/testsuite/inspect_discover/config_child_dir/broca.toml"
+    "config": "[CARGO_TARGET_TMPDIR]/testsuite/inspect_root/config_child_dir/broca.toml"
   }
 ]
 "#]]
@@ -62,7 +62,7 @@ fn git_child_dir() {
         .unwrap();
 
     crate::broca()
-        .args(["inspect", "discover"])
+        .args(["inspect", "root"])
         .current_dir(fixture.path().unwrap().join("foo/bar"))
         .assert()
         .success()
@@ -70,7 +70,7 @@ fn git_child_dir() {
             str![[r#"
 [
   {
-    "root": "[CARGO_TARGET_TMPDIR]/testsuite/inspect_discover/git_child_dir"
+    "root": "[CARGO_TARGET_TMPDIR]/testsuite/inspect_root/git_child_dir"
   }
 ]
 "#]]

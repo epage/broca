@@ -4,12 +4,12 @@ pub use camino::Utf8PathBuf;
 #[derive(Clone, Debug)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
-pub enum SiteLocation {
+pub enum Root {
     Root(Utf8PathBuf),
     Config(Utf8PathBuf),
 }
 
-impl SiteLocation {
+impl Root {
     pub fn discover() -> Result<Self, anyhow::Error> {
         let cwd = std::env::current_dir()?;
         let cwd = Utf8PathBuf::from_path_buf(cwd).map_err(|cwd| {
@@ -50,7 +50,7 @@ const CONFIG_FILE_NAME: &[&str] = &[".broca.toml", "_broca.toml", "broca.toml"];
 #[derive(Default, Clone, Debug)]
 pub struct Site {
     #[cfg_attr(feature = "serde", serde(skip))]
-    pub _location: Option<SiteLocation>,
+    pub _root: Option<Root>,
     #[cfg_attr(feature = "serde", serde(skip))]
     pub _unused: Vec<String>,
 }
@@ -58,13 +58,13 @@ pub struct Site {
 impl Site {
     #[cfg(feature = "toml")]
     pub fn load() -> Result<Self, anyhow::Error> {
-        let location = SiteLocation::discover()?;
+        let location = Root::discover()?;
         match &location {
-            SiteLocation::Root(_) => Ok(Self {
-                _location: Some(location),
+            Root::Root(_) => Ok(Self {
+                _root: Some(location),
                 ..Default::default()
             }),
-            SiteLocation::Config(path) => Self::load_from(path),
+            Root::Config(path) => Self::load_from(path),
         }
     }
 
@@ -73,7 +73,7 @@ impl Site {
         let content = std::fs::read_to_string(toml_path.as_std_path())
             .map_err(|err| anyhow::format_err!("{err}: {toml_path}"))?;
         let (mut site, unused): (Self, _) = crate::toml::from_str(&content)?;
-        site._location = Some(SiteLocation::Config(toml_path.to_owned()));
+        site._root = Some(Root::Config(toml_path.to_owned()));
         site._unused = unused;
         Ok(site)
     }

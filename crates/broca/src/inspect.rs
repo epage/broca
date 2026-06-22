@@ -1,7 +1,7 @@
 pub(crate) fn exec(cmd: broca_args::InspectCommand) -> Result<(), anyhow::Error> {
     match cmd {
-        broca_args::InspectCommand::Discover => {
-            let location = broca_config::site::SiteLocation::discover()?;
+        broca_args::InspectCommand::Root => {
+            let location = broca_config::site::Root::discover()?;
             anstream::println!("{}", serde_json::to_string(&location)?);
         }
         broca_args::InspectCommand::Config => {
@@ -13,8 +13,7 @@ pub(crate) fn exec(cmd: broca_args::InspectCommand) -> Result<(), anyhow::Error>
                         annotate_snippets::Level::WARNING
                             .primary_title(format!("unused field `{field}`")),
                     );
-                    if let Some(broca_config::site::SiteLocation::Config(config)) = &site._location
-                    {
+                    if let Some(broca_config::site::Root::Config(config)) = &site._root {
                         group = group.element(annotate_snippets::Origin::path(config.as_str()));
                     }
                     let report = &[group];

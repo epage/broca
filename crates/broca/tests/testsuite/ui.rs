@@ -19,9 +19,9 @@ fn inspect_help() {
 }
 
 #[test]
-fn inspect_discover_help() {
+fn inspect_root_help() {
     crate::broca()
-        .args(["inspect", "discover", "--help"])
+        .args(["inspect", "root", "--help"])
         .assert()
         .success()
         .stdout_eq(file![_: TermSvg]);
