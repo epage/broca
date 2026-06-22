@@ -33,7 +33,11 @@ anyhow = "1.0.102"
 broca-args = { version = "0.0.1", path = "../broca-args" }
 broca-config = { version = "0.0.1", path = "../broca-config", features = ["serde", "toml"] }
 clap = { version = "4.6.1", features = ["derive"] }
+jiff = "0.2.28"
 serde_json = "1.0.150"
+tracing = "0.1.44"
+tracing-chrome = "0.7.2"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 
 [lints]
 workspace = true

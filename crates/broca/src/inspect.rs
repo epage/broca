@@ -1,3 +1,4 @@
+#[tracing::instrument]
 pub(crate) fn exec(cmd: broca_args::InspectCommand) -> Result<(), anyhow::Error> {
     match cmd {
         broca_args::InspectCommand::Root => {

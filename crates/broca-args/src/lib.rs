@@ -4,20 +4,20 @@
 #![warn(clippy::print_stderr)]
 #![warn(clippy::print_stdout)]
 
-#[derive(clap::Parser)]
+#[derive(Debug, clap::Parser)]
 #[command(styles = clap_cargo::style::CLAP_STYLING)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: CliCommand,
 }
 
-#[derive(clap::Subcommand)]
+#[derive(Debug, clap::Subcommand)]
 pub enum CliCommand {
     #[command(subcommand)]
     Inspect(InspectCommand),
 }
 
-#[derive(clap::Subcommand)]
+#[derive(Debug, clap::Subcommand)]
 pub enum InspectCommand {
     Root,
     Config,
