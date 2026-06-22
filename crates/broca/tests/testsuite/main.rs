@@ -1,7 +1,7 @@
 mod macros;
 
 mod inspect_config;
-mod inspect_discover;
+mod inspect_root;
 mod ui;
 
 fn broca() -> snapbox::cmd::Command {

@@ -22,11 +22,11 @@
 </tspan>
     <tspan x="10px" y="64px"><tspan>Commands:</tspan>
 </tspan>
-    <tspan x="10px" y="82px"><tspan>  discover  </tspan>
+    <tspan x="10px" y="82px"><tspan>  root    </tspan>
 </tspan>
-    <tspan x="10px" y="100px"><tspan>  config    </tspan>
+    <tspan x="10px" y="100px"><tspan>  config  </tspan>
 </tspan>
-    <tspan x="10px" y="118px"><tspan>  help      Print this message or the help of the given subcommand(s)</tspan>
+    <tspan x="10px" y="118px"><tspan>  help    Print this message or the help of the given subcommand(s)</tspan>
 </tspan>
     <tspan x="10px" y="136px">
 </tspan>
