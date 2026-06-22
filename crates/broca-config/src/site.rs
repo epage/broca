@@ -21,6 +21,7 @@ impl Root {
         Self::discover_from(&cwd)
     }
 
+    #[cfg_attr(feature = "tracing", tracing::instrument)]
     pub fn discover_from(cwd: &Utf8Path) -> Result<Self, anyhow::Error> {
         for dir in cwd.ancestors() {
             let mut path = dir.to_owned();
@@ -69,6 +70,7 @@ impl Site {
     }
 
     #[cfg(feature = "toml")]
+    #[cfg_attr(feature = "tracing", tracing::instrument)]
     pub fn load_from(toml_path: &Utf8Path) -> Result<Self, anyhow::Error> {
         let content = std::fs::read_to_string(toml_path.as_std_path())
             .map_err(|err| anyhow::format_err!("{err}: {toml_path}"))?;
