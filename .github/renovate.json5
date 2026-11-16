@@ -1,14 +1,18 @@
 {
-  extends: ["helpers:pinGitHubActionDigests"],
+  extends: [
+    'helpers:pinGitHubActionDigests',
+  ],
   schedule: [
     'before 5am on the first day of the month',
   ],
   semanticCommits: 'enabled',
   commitMessageLowerCase: 'never',
   configMigration: true,
-  dependencyDashboard: true,
-  "pre-commit": {
-    enabled: true
+  dependencyDashboard: {
+    enabled: true,
+  },
+  'pre-commit': {
+    enabled: true,
   },
   customManagers: [
     {
@@ -51,7 +55,7 @@
       matchDepNames: [
         'STABLE',
       ],
-      extractVersion: '^(?<version>\\d+\\.\\d+)',  // Drop the patch version
+      extractVersion: '^(?<version>\\d+\\.\\d+)',
       schedule: [
         '* * * * *',
       ],
@@ -82,12 +86,6 @@
       automerge: true,
       groupName: 'compatible (actions)',
     },
-    // Goals:
-    // - Keep version reqs low, ignoring compatible normal/build dependencies
-    // - Take advantage of latest dev-dependencies
-    // - Rollup safe upgrades to reduce CI runner load
-    // - Help keep number of versions down by always using latest breaking change
-    // - Have lockfile and manifest in-sync
     {
       matchManagers: [
         'cargo',
